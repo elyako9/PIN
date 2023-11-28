@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: my-demo-cluster
+  region: us-east-1 #Aqui indicamos la región en la cual vamos a crear el CLUSTER
+  version: "1.26"
+availabilityZones:
+- us-east-1a
+- us-east-1b
+managedNodeGroups:
+- name: general
+  privateNetworking: true
+  instanceType: t2.small #Tipo de instancias para la creación de los NODOS
+  desiredCapacity: 2 #Cantidad de NODOS deseados
+  #spot: true #Con esta línea podemos hacer uso de instancias SPOT que sos más económicas. Esto funciona únicamente en algunas regiones
+  volumeSize: 30 #Cantidad en Gigas del disco EBS para cada Nodo
